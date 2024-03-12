@@ -1,0 +1,139 @@
+/* Text assets */
+.header_1 {
+    font-family: 'Times New Roman', serif;
+    font-size: 50px;
+    font-weight: 900;
+    color: black;
+    text-align: center;
+    vertical-align: bottom;
+    padding: 0px;
+    margin: 0px;
+    /*position: relative;*/
+}
+
+.header_2 {
+    font-family: 'Arial', cursive;
+    font-size: 25px;
+    font-weight: 600;
+    color: black;
+}
+
+
+
+/* Button assets */
+.nav_button_1 {
+    font-family: 'Arial';
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    color: Black;
+    background-color: White;
+    /*background-color: CornflowerBlue;*/
+    border: 2px solid Black;
+    user-select: none;
+    padding: 10px;
+}
+.nav_button_1:hover {
+    color: White;
+    background-color: Black;
+    /*background-color: Navy;*/
+    /*background-color: DuskyTurquoise;*/
+    border: 1px solid Black;
+    }
+
+
+
+/* Card-filters assets */
+.card-filter_1 {
+    margin: 10px;
+    background-color: AliceBlue;
+}
+
+.card-filter_header_1 {
+    font-family: 'Arial';
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    background-color: CornflowerBlue;
+    /*padding: auto;*/
+    /*margin: auto;*/
+}
+
+
+/* Information cards assets */
+.information_card_1 {
+    margin: 10px;
+    background-color: AliceBlue;
+}
+
+.information_card_header_1 {
+    font-family: 'Arial';
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    background-color: CornflowerBlue;
+    /*padding: auto;*/
+    /*margin: auto;*/
+}
+
+
+/* Sidebars assets */
+.sidebar_1{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 15%;
+    padding: 4rem 1rem;
+    background-color: Azure;
+    display: inline-block;
+    vertical-align: top;
+    overflow: auto;
+}
+
+
+
+/* Slider assets */
+
+/* Настройки стиля для рукояток слайдера */
+.rc-slider-handle{
+    border: 3px solid CornflowerBlue;
+    height: 50;
+    width: 50;
+    background-color: White;
+}
+
+/* Настройки стиля для неактивных точек слайдера
+.rc-slider-dot {
+  border: 1px solid AliceBlue;
+  background-color: AliceBlue;
+}
+*/
+
+
+/* Настройки стиля для активных точек слайдера */
+.rc-slider-dot.rc-slider-dot-active {
+  border: 1px solid CornflowerBlue;
+  background-color: White;
+}
+
+/* Настройки стиля для невыбранных диапазонов
+.rc-slider-rail {
+   border: 1px solid AliceBlue;
+   background-color: AliceBlue;
+}
+*/
+
+/* Настройки стиля для выбранного диапазона */
+.rc-slider-track {
+  background-color: CornflowerBlue;
+}
+
+
+
+
+
+
+
+

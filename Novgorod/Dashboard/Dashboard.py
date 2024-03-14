@@ -59,7 +59,7 @@ app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 colors = {'background': '#FFFFFF', 'text': '#000000'}
 
 app.layout = html.Div(
-    style={'backgroundColor': colors['background'], 'width': 1820, 'height': 720},
+    style={'backgroundColor': colors['background']}, #'width': 1820, 'height': 720},
     children=[
         sidebar,
         tabs_navigator_offcanvas,

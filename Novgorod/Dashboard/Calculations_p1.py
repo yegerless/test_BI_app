@@ -69,11 +69,19 @@ def choose_hospital_ASC(year, month, input_hospital):
     ACS_fig.add_trace(go.Bar(name='ОКС без подъема ST', x=months_ACS_without_eST, y=cnt_ACS_without_eST['Value'], text=cnt_ACS_without_eST['Value'],
                           textposition='auto',  marker_color='PaleTurquoise'), secondary_y=False)
     ACS_fig.update_layout(barmode='stack')
-    ACS_fig.add_trace(go.Scatter(x=df_ACS_mortality_rate['Month'], y=df_ACS_mortality_rate['Value'], mode='lines',
-                                 name='Летальность ОКС', marker_color='red', text=df_ACS_mortality_rate['Value'],
-                                 textposition='top center'),
+    ACS_fig.update_traces(textfont_size=16)
+    ACS_fig.add_trace(go.Scatter(x=df_ACS_mortality_rate['Month'], y=df_ACS_mortality_rate['Value'], mode='lines+text',
+                                 name='Летальность ОКС', marker_color='red', text=[f'{x / 100:.1%}' for x in df_ACS_mortality_rate['Value']],
+                                 textfont={'family': 'Arial', 'size': 10, 'color': 'Black'},
+                                 textposition='top center', hoverinfo='text'),
                       secondary_y=True)
-    ACS_fig.update_layout(yaxis={'visible': False, 'showticklabels': False}, yaxis2={'visible': False, 'showticklabels': False})
+    ACS_fig.update_layout(yaxis={'visible': False, 'showticklabels': False}, yaxis2={'visible': False, 'showticklabels': False}, 
+                          title={'text': '<b>Динамика количества ОКС и летальности при ОКС за выбранный год</b>',
+                                 'font': {'family': 'Arial', 'size': 24, 'color': 'Black'}, 'x': 0.5, 'y': 0.85}, 
+                          plot_bgcolor='white', margin={'l': 30, 'r': 0, 't': 100, 'b': 0}, 
+                          legend={'x': 0.93, 'y': 0.5, 'traceorder': 'reversed', 'font': {'family': 'Arial', 'size': 14, 'color': 'Black'}, 
+                                  'yanchor': 'top', 'xanchor': 'left'})
+
 
     # Охват ЧКВ
     PTCA_cnt = df.loc[(df['№ п/п'] == '39.1') &
@@ -126,8 +134,8 @@ def choose_hospital_ASC(year, month, input_hospital):
                                  name='Летальность ОКС', marker_color='red', text=df_MI_mortality_rate['Value'],
                                  textposition='top center'),
                       secondary_y=True)
-    MI_fig.update_layout(yaxis={'visible': False, 'showticklabels': False},
-                         yaxis2={'visible': False, 'showticklabels': False})
+    MI_fig.update_layout(yaxis={'visible': False, 'showticklabels': False}, yaxis2={'visible': False, 'showticklabels': False}, 
+                         title='Динамика количества выбывших и летальности при ИМ за выбранный год')
 
     # График путь больного ОКС с подъемом ST
     ACS_with_elevation_ST_12_h_delivery = df.loc[(df['№ п/п'] == 34) &

@@ -12,100 +12,87 @@ import plotly.graph_objects as go
 # Всего ОКС
 total_ACS_card = dbc.Card(
     children=[
-        dbc.CardHeader(html.H5("Всего ОКС", className="card-title"), #style={'background-color': 'CornflowerBlue'},
-                       className='information_card_header_1'),
-        dbc.CardBody(html.P(className="card-text", id='total_ASC'))
+        dbc.CardHeader("Всего ОКС", className='information_card_header_1'),
+        dbc.CardBody(html.P(className="card_text_1", id='total_ASC'))
     ],
-    #color="AliceBlue", outline=True, style={},
     className='information_card_1')
 
 # Кол-во ОКС с подъемом ST
 ACS_with_elevation_ST_card = dbc.Card(
     children=[
-        dbc.CardHeader(html.H5("ОКС с подъемом ST", className="card-title"), #style={'background-color': 'CornflowerBlue'},
-                       className='information_card_header_1'),
-        dbc.CardBody(html.P(className="card-text", id='cnt_ACS_with_elevation_ST'))
+        dbc.CardHeader("ОКС с подъемом ST", className='information_card_header_1'),
+        dbc.CardBody(html.P(className="card_text_1", id='cnt_ACS_with_elevation_ST'))
     ],
-    #color="AliceBlue", outline=True, style={},
     className='information_card_1')
 
 # Кол-во ОКС без подъема ST
 ACS_without_elevation_ST_card = dbc.Card(
     children=[
-        dbc.CardHeader(html.H5("ОКС без подъема ST", className="card-title"), #style={'background-color': 'CornflowerBlue'},
-                       className='information_card_header_1'),
-        dbc.CardBody(html.P(className="card-text", id='cnt_ACS_without_elevation_ST'))
+        dbc.CardHeader("ОКС без подъема ST", className='information_card_header_1'),
+        dbc.CardBody(html.P(className="card_text_1", id='cnt_ACS_without_elevation_ST'))
     ],
-    #color="AliceBlue", outline=True, style={},
     className='information_card_1')
 
 # Охват ЧКВ
 PCI_coverage_card = dbc.Card(
     children=[
-        dbc.CardHeader(html.H5('Охват ЧКВ', className="card-title"), className='information_card_header_1'),
-        dbc.CardBody(html.P(className="card-text", id='PCI_coverage'))
+        dbc.CardHeader('Охват ЧКВ', className='information_card_header_1'),
+        dbc.CardBody(html.P(className="card_text_1", id='PCI_coverage'))
     ],
-    #color='primary', outline=True, style={},
     className='information_card_1')
 
 # Летальность при ОКС
 ACS_mortality_rate_card = dbc.Card(
     children=[
-        dbc.CardHeader(html.H5('Летальность ОКС', className="card-title"), className='information_card_header_1'),
-        dbc.CardBody(html.P(className="card-text", id='ACS_mortality_rate'))
+        dbc.CardHeader('Летальность ОКС', className='information_card_header_1'),
+        dbc.CardBody(html.P(className="card_text_1", id='ACS_mortality_rate'))
     ],
-    #color='primary', outline=True, style={},
     className='information_card_1')
 
 # Летальность при ИМ
 MI_mortality_rate_card = dbc.Card(
     children=[
-        dbc.CardHeader(html.H5('Летальность ИМ', className="card-title"), className='information_card_header_1'),
-        dbc.CardBody(html.P(className="card-text", id='MI_mortality_rate'))
+        dbc.CardHeader('Летальность ИМ', className='information_card_header_1'),
+        dbc.CardBody(html.P(className="card_text_1", id='MI_mortality_rate'))
     ],
-    #color='primary', outline=True, style={},
     className='information_card_1')
 
 # ОКСпST
 ACS_with_elevation_ST_information_card = dbc.Card(
     children=[
-        dbc.CardBody(id='count_deaths_ACS_with_eST'),
-        dbc.CardBody(id='mortality_rate_ACS_with_eST'),
-        dbc.CardBody(id='mortality_rate_ACS_with_eST_ideal_path'),
-        dbc.CardBody(id='part_deaths_ACS_with_eST_without_revasc')
+        dbc.CardBody(id='count_deaths_ACS_with_eST', className='card_text_2'),
+        dbc.CardBody(id='mortality_rate_ACS_with_eST', className='card_text_2'),
+        dbc.CardBody(id='mortality_rate_ACS_with_eST_ideal_path', className='card_text_2'),
+        dbc.CardBody(id='part_deaths_ACS_with_eST_without_revasc', className='card_text_2')
     ],
-    #color='primary', outline=True, style={},
     className='information_card_1')
 
 # ОКСбпST высокого риска
 ACS_without_elevation_ST_high_risk_information_card = dbc.Card(
     children=[
-        dbc.CardHeader(html.H5('ОКСбпST высокого риска'), className='information_card_header_1'),
-        dbc.CardBody(id='PTCA_coverage_ACS_without_eST_high_risk'),
-        dbc.CardBody(id='mortality_rate_ACS_without_eST_high_risk')
+        dbc.CardHeader('ОКСбпST высокого риска', className='information_card_header_1'),
+        dbc.CardBody(id='PTCA_coverage_ACS_without_eST_high_risk', className='card_text_2'),
+        dbc.CardBody(id='mortality_rate_ACS_without_eST_high_risk', className='card_text_2')
     ],
-    #color='primary', outline=True, style={},
     className='information_card_1')
 
 # ОКСбпST низкого риска
 ACS_without_elevation_ST_low_risk_information_card = dbc.Card(
     children=[
-        dbc.CardHeader(html.H5('ОКСбпST низкого риска'), className='information_card_header_1'),
-        dbc.CardBody(id='PTCA_coverage_ACS_without_eST_low_risk'),
-        dbc.CardBody(id='mortality_rate_ACS_without_eST_low_risk')
+        dbc.CardHeader('ОКСбпST низкого риска', className='information_card_header_1'),
+        dbc.CardBody(id='PTCA_coverage_ACS_without_eST_low_risk', className='card_text_2'),
+        dbc.CardBody(id='mortality_rate_ACS_without_eST_low_risk', className='card_text_2')
     ],
-    #color='primary', outline=True, style={},
     className='information_card_1')
 
 # Шок
 Shock_information_card = dbc.Card(
     children=[
-        dbc.CardBody(id='count_shock'),
-        dbc.CardBody(id='PTCA_coverage_for_shock'),
-        dbc.CardBody(id='mortality_rate_shock'),
-        dbc.CardBody(id='part_shock_for_deaths')
+        dbc.CardBody(id='count_shock', className='card_text_2'),
+        dbc.CardBody(id='PTCA_coverage_for_shock', className='card_text_2'),
+        dbc.CardBody(id='mortality_rate_shock', className='card_text_2'),
+        dbc.CardBody(id='part_shock_for_deaths', className='card_text_2')
     ],
-    #color='primary', outline=True, style={},
     className='information_card_1')
 
 

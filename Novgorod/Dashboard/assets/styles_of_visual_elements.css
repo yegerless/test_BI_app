@@ -13,9 +13,20 @@
 
 .header_2 {
     font-family: 'Arial', cursive;
-    font-size: 25px;
+    font-size: 24px;
     font-weight: 600;
     color: black;
+}
+
+.header_3 {
+    font-family: 'Arial', cursive;
+    font-size: 24px;
+    font-weight: 600;
+    color: black;
+    text-align: center;
+    vertical-align: bottom;
+    padding: 0px;
+    margin: 0px;
 }
 
 .card_text_1{ 

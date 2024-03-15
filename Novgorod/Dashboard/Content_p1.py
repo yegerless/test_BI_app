@@ -134,10 +134,7 @@ content = html.Div(
         # Блок с дополнительной информацией по ОКСпST (график-воронка + карточка с показателями летальности)
         html.Div(
             children=[
-                html.H5(children='ОКСпST',
-                        style={'textAlign': 'center'}
-                        # 'position': 'relative', 'width': 1820, 'top': 10}
-                        ),
+                html.Div('ОКСпST', className='header_3'),
                 dcc.Graph(id='ACS_path_funnel'),
                 ACS_with_elevation_ST_information_card
             ],
@@ -147,7 +144,7 @@ content = html.Div(
         # Блок с дополнительной информацией по ОКСбпST (гистограмма с кол-вом по риску и карточки с ЧКВ и летальностью)
         html.Div(
             children=[
-                html.H5(children='ОКСбпST', style={'textAlign': 'center'}),
+                html.H5(children='ОКСбпST', className='header_3'),
                 dcc.Graph(id='ACS_without_eST_risk'),
                 ACS_without_elevation_ST_high_risk_information_card,
                 ACS_without_elevation_ST_low_risk_information_card
@@ -158,16 +155,12 @@ content = html.Div(
         # Блок с дополнительной информацией по шоку при ОКС (график + карточка)
         html.Div(
             children=[
-                html.H5(children='Шок', style={'textAlign': 'center'}),
+                html.H5(children='Шок', className='header_3'),
                 dcc.Graph(id='Shock_bar'),
                 Shock_information_card
             ],
             style={'display': 'inline-block', 'vertical-align': 'top', 'width': '33%', 'left': 0}
         )
-
-
-
-
-
+        
     ]
 )

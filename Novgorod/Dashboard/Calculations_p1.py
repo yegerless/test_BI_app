@@ -65,9 +65,9 @@ def choose_hospital_ASC(year, month, input_hospital):
     df_ACS_mortality_rate['Month'] = df_ACS_mortality_rate['Month_number'].replace(months_dict)
     ACS_fig = make_subplots(specs=[[{'secondary_y': True}]])
     ACS_fig.add_trace(go.Bar(name='ОКС с подъемом ST', x=months_ACS_with_eST, y=cnt_ACS_with_eST['Value'], text=cnt_ACS_with_eST['Value'],
-                          textposition='auto', marker_color='SteelBlue'), secondary_y=False)
+                          textposition='auto', marker_color='SteelBlue', hoverinfo='text'), secondary_y=False)
     ACS_fig.add_trace(go.Bar(name='ОКС без подъема ST', x=months_ACS_without_eST, y=cnt_ACS_without_eST['Value'], text=cnt_ACS_without_eST['Value'],
-                          textposition='auto',  marker_color='PaleTurquoise'), secondary_y=False)
+                          textposition='auto',  marker_color='PaleTurquoise', hoverinfo='text'), secondary_y=False)
     ACS_fig.update_layout(barmode='stack')
     ACS_fig.update_traces(textfont_size=16)
     ACS_fig.add_trace(go.Scatter(x=df_ACS_mortality_rate['Month'], y=df_ACS_mortality_rate['Value'], mode='lines+text',
@@ -129,13 +129,19 @@ def choose_hospital_ASC(year, month, input_hospital):
     df_MI_mortality_rate['Month'] = df_MI_mortality_rate['Month_number'].replace(months_dict)
     MI_fig = make_subplots(specs=[[{'secondary_y': True}]])
     MI_fig.add_trace(go.Bar(name='Кол-во выбывших при ИМ', x=months_MI, y=cnt_MI['Value'], text=cnt_MI['Value'],
-                          textposition='auto', marker_color='Khaki'), secondary_y=False)
-    MI_fig.add_trace(go.Scatter(x=df_MI_mortality_rate['Month'], y=df_MI_mortality_rate['Value'], mode='lines',
-                                 name='Летальность ОКС', marker_color='red', text=df_MI_mortality_rate['Value'],
-                                 textposition='top center'),
+                          textposition='auto', marker_color='Khaki', hoverinfo='text'), secondary_y=False)
+    MI_fig.update_traces(textfont_size=16)
+    MI_fig.add_trace(go.Scatter(x=df_MI_mortality_rate['Month'], y=df_MI_mortality_rate['Value'], mode='lines+text',
+                                 name='Летальность ОКС', marker_color='red', text=[f'{x / 100:.1%}' for x in df_MI_mortality_rate['Value']],
+                                 textfont={'family': 'Arial', 'size': 10, 'color': 'Black'},
+                                 textposition='top center', hoverinfo='text'),
                       secondary_y=True)
     MI_fig.update_layout(yaxis={'visible': False, 'showticklabels': False}, yaxis2={'visible': False, 'showticklabels': False}, 
-                         title='Динамика количества выбывших и летальности при ИМ за выбранный год')
+                         title={'text': '<b>Динамика количества выбывших и летальности при ИМ за выбранный год</b>', 
+                                'font': {'family': 'Arial', 'size': 24, 'color': 'Black'}, 'x': 0.5, 'y': 0.85},
+                                plot_bgcolor='white', margin={'l': 30, 'r': 0, 't': 100, 'b': 0}, 
+                          legend={'x': 0.94, 'y': 0.5, 'traceorder': 'reversed', 'font': {'family': 'Arial', 'size': 14, 'color': 'Black'}, 
+                                  'yanchor': 'top', 'xanchor': 'left'})
 
     # График путь больного ОКС с подъемом ST
     ACS_with_elevation_ST_12_h_delivery = df.loc[(df['№ п/п'] == 34) &
@@ -149,7 +155,10 @@ def choose_hospital_ASC(year, month, input_hospital):
     ACS_path_data = {'number': [ACS_with_elevation_ST, ACS_with_elevation_ST_12_h_delivery,
                                 ACS_with_elevation_ST_12_h_PCI],
                      'stage': ['Всего', 'Доставлено за 12 часов', 'ЧКВ за 12 часов']}
-    ACS_path_funnel_fig = px.funnel(ACS_path_data, x='number', y='stage', title='Путь больного с ОКСпST')
+    ACS_path_funnel_fig = px.funnel(ACS_path_data, x='number', y='stage')
+    ACS_path_funnel_fig.update_layout(plot_bgcolor='white', margin={'l': 0, 'r': 0, 't': 50, 'b': 0}, 
+                                      title={'x': 0.5, 'y': 0.9, 'text': '<b>Путь больного с ОКСпST</b>', 'font': {'family': 'Arial', 'size': 20, 'color': 'Black'}, 
+                                             'yanchor': 'bottom', 'xanchor': 'center'})
 
     # Кол-во умерших при ОКСпST
     cnt_deaths_ACS_with_eST = df.loc[(df['№ п/п'] == '44.1') &
@@ -197,11 +206,12 @@ def choose_hospital_ASC(year, month, input_hospital):
     ACS_with_eST_risk_fig = go.Figure(
         data=[
             go.Bar(x=['Высокий риск', 'Низкий риск'], y=[cnt_ACS_without_eST_high_risk, cnt_ACS_without_eST_low_risk],
-                   text=[cnt_ACS_without_eST_high_risk, cnt_ACS_without_eST_low_risk],
-                   textfont=dict(size=18, color="black"), marker_color=['#FFBAA0', '#8BDDB8']
-                   )
+                   text=[cnt_ACS_without_eST_high_risk, cnt_ACS_without_eST_low_risk], textfont=dict(size=18, color="black"), marker_color=['#FFBAA0', '#8BDDB8'], 
+                   hoverinfo='text')
         ])
-    ACS_with_eST_risk_fig.update_layout(yaxis={'visible': False, 'showticklabels': False})
+    ACS_with_eST_risk_fig.update_layout(yaxis={'visible': False, 'showticklabels': False}, plot_bgcolor='white', margin={'l': 0, 'r': 0, 't': 50, 'b': 0}, 
+                                        title={'x': 0.5, 'y': 0.9, 'text': '<b>ОКСбпST по степени риска</b>', 'font': {'family': 'Arial', 'size': 20, 'color': 'Black'}, 
+                                               'yanchor': 'bottom', 'xanchor': 'center'})
 
     # Охват ЧКВ при ОКСбпST высокого риска
     cnt_PTCA_ACS_without_eST_high_risk = df.loc[(df['№ п/п'] == '39.1.1.1') &
@@ -261,15 +271,16 @@ def choose_hospital_ASC(year, month, input_hospital):
     Shock_fig = go.Figure(
         data=[
             go.Bar(name='Шок ОКСпST', y=[part_shock_ACS_with_eST], text=f'{part_shock_ACS_with_eST:.1%}',
-                   marker_color='SteelBlue', textposition='inside'),
+                   marker_color='SteelBlue', textposition='inside', hoverinfo='text'),
             go.Bar(name='Шок ОКСбпST', y=[part_shock_ACS_without_eST], text=f'{part_shock_ACS_without_eST:.1%}',
-                   marker_color='PaleTurquoise', textposition='inside')
+                   marker_color='PaleTurquoise', textposition='inside', hoverinfo='text')
         ])
-    Shock_fig.update_layout(barmode='stack', xaxis={'visible': False, 'showticklabels': False},
-                            yaxis={'visible': False, 'showticklabels': False})
-    '''
-    textfont=dict(size=18, color="black"))
-    '''
+    Shock_fig.update_layout(barmode='stack', xaxis={'visible': False, 'showticklabels': False}, yaxis={'visible': False, 'showticklabels': False}, 
+                            plot_bgcolor='white', margin={'l': 0, 'r': 0, 't': 50, 'b': 0}, 
+                            title={'x': 0.5, 'y': 0.9, 'text': '<b>Доли типов ОКС в структуре шока</b>', 'font': {'family': 'Arial', 'size': 20, 'color': 'Black'}, 
+                                   'yanchor': 'bottom', 'xanchor': 'center'}, 
+                            legend={'x': 0.93, 'y': 0.5, 'traceorder': 'reversed', 'font': {'family': 'Arial', 'size': 14, 'color': 'Black'}, 
+                                    'yanchor': 'middle', 'xanchor': 'left'})
 
     # Охват ЧКВ у пациентов с шоком
     cnt_PTCA_for_shock = df.loc[(df['№ п/п'] == '39.1.3') &

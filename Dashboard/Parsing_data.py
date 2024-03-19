@@ -6,8 +6,11 @@ pd.set_option('display.max.rows', None)
 
 
 'Creating list of files with data'
-p = Path(r'Novgorod/данные/XLS')
-file_list = [x for x in p.iterdir() if x.is_file()]
+p = Path(r'../Data')
+file_list = [x for x in p.iterdir() if str(x).endswith('.xls')]
+
+
+
 
 
 'Creating template for parsed table'

@@ -6,6 +6,7 @@ from Filters_p1 import sidebar
 from Content_p1 import content
 
 
+
 tabs_navigator_offcanvas = html.Div(
     children=[
         dbc.Button(

@@ -2,7 +2,7 @@ import pandas as pd
 from dash import Dash, dcc, html, dash_table, callback, Output, Input
 import dash_bootstrap_components as dbc
 
-from Novgorod.Parsing_data import df
+from Parsing_data import df
 
 months_dict = {1: 'Январь', 2: 'Февраль', 3: 'Март', 4: 'Апрель', 5: 'Май', 6: 'Июнь',
                7: 'Июль', 8: 'Август', 9: 'Сентябрь', 10: 'Октябрь', 11: 'Ноябрь', 12: 'Декабрь'}

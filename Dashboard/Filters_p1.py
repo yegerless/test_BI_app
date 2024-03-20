@@ -34,10 +34,7 @@ months_slider = html.Div(
     ],
     #className='month_slider_1',
     style={'width': '25%',
-           'justify-content': 'center', 'margin': '0 auto', 'align-items': 'center', 'vertical-align': 'center'
-           #'padding': '100'
-           }
-)
+           'justify-content': 'center', 'margin': '0 auto', 'align-items': 'center', 'vertical-align': 'center'})
 
 
 
@@ -56,7 +53,6 @@ sidebar = html.Div(
 
         # Фильтр по году
         year_choice_card,
-        #html.Div(children=[year_choice_card]), #, style={'display': 'inline-block', 'vertical-align': 'top'}),
 
         # Фильтр по стационару
         hospital_choice_card,

@@ -6,7 +6,7 @@ pd.set_option('display.max.rows', None)
 
 
 'Creating list of files with data'
-p = Path(r'../Data')
+p = Path(r'./Data')
 file_list = [x for x in p.iterdir() if str(x).endswith('.xls')]
 
 
@@ -34,7 +34,6 @@ for file in file_list:
     df = pd.concat([df, df_f])    # Unioning
 
 df.reset_index(drop=True, inplace=True)
-# df['№ п/п'] = df['№ п/п'].astype('str')
 
 
 'Unpivotting df'
@@ -109,5 +108,4 @@ df['Month_number'] = df['Date'].dt.month
 
 if __name__ == '__main__':
     print(df.info())
-
-    #df.to_excel(r'\\dfs-02\DKH_2\Gbmu\Новгород\Мониторинг_Новгород.xlsx')    # For cheking parsed table
+    df.to_excel(r'Мониторинг_Новгород.xlsx')    # For cheking parsed table

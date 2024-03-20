@@ -5,7 +5,6 @@ import plotly.express as px
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 
-#'SteelBlue', 'PaleTurquoise'
 
 'Cards with numbers'
 # Всего ОКС
@@ -96,7 +95,7 @@ Shock_information_card = dbc.Card(
 
 
 content = html.Div(
-    style={"margin-left": "18rem", "margin-right": "2rem"}, #, #"padding": "2rem 1rem"},
+    style={"margin-left": "18rem", "margin-right": "2rem"},
     children=[
         #Заголовок дашборда
         html.Div(children='Мониторинг ОКС Новгородская область', className='header_1'),

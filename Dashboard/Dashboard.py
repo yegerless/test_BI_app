@@ -60,7 +60,7 @@ app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 colors = {'background': '#FFFFFF', 'text': '#000000'}
 
 app.layout = html.Div(
-    style={'backgroundColor': colors['background']}, #'width': 1820, 'height': 720},
+    style={'backgroundColor': colors['background']},
     children=[
         sidebar,
         tabs_navigator_offcanvas,
@@ -113,4 +113,4 @@ def open_tabs_navigator(n1, is_open):
 
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(host='0.0.0.0', debug=False, port=8050)

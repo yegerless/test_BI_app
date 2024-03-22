@@ -55,8 +55,11 @@ tabs_navigator_offcanvas = html.Div(
 )
 
 
-server = flask.Flask(__name__)
-app = Dash(name='test_BI_app', server=server, title='test_BI_app', external_stylesheets=[dbc.themes.BOOTSTRAP])
+#server = flask.Flask(__name__)
+app = Dash(name='test_BI_app', 
+           #server=server, 
+           title='test_BI_app', 
+           external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 colors = {'background': '#FFFFFF', 'text': '#000000'}
 

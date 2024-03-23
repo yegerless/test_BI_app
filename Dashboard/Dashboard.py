@@ -1,6 +1,6 @@
 from dash import Dash, html, callback, Output, Input, State
 import dash_bootstrap_components as dbc
-#import flask
+import flask
 import dash_auth
 
 from Calculations_p1 import choose_hospital_ASC
@@ -10,7 +10,7 @@ from Content_p1 import content
 
 VALID_USERNAME_PASSWORD_PAIRS = {
     'user_42': '1234',
-    'Sysoev_SA': 'Jj010900'
+    'Sysoev_SA': '1234'
 }
 
 
@@ -62,9 +62,9 @@ tabs_navigator_offcanvas = html.Div(
 )
 
 
-#server = flask.Flask(__name__)
+server = flask.Flask(__name__)
 app = Dash(name=__name__, 
-           #server=server, 
+           server=server, 
            title='test_BI_app', 
            external_stylesheets=[dbc.themes.BOOTSTRAP])
 
@@ -130,4 +130,4 @@ def open_tabs_navigator(n1, is_open):
 
 # Development server
 if __name__ == '__main__':
-    app.run_server(host='0.0.0.0', debug=True, port=8050)
+    app.run_server(host='0.0.0.0', debug=False, port=8050)

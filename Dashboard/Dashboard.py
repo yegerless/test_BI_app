@@ -1,6 +1,6 @@
 from dash import Dash, html, callback, Output, Input, State
 import dash_bootstrap_components as dbc
-import flask
+#import flask
 
 from Calculations_p1 import choose_hospital_ASC
 from Filters_p1 import sidebar
@@ -56,7 +56,7 @@ tabs_navigator_offcanvas = html.Div(
 
 
 #server = flask.Flask(__name__)
-app = Dash(name='test_BI_app', 
+app = Dash(name=__name__, 
            #server=server, 
            title='test_BI_app', 
            external_stylesheets=[dbc.themes.BOOTSTRAP])

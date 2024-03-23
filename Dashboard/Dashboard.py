@@ -1,10 +1,17 @@
 from dash import Dash, html, callback, Output, Input, State
 import dash_bootstrap_components as dbc
 #import flask
+import dash_auth
 
 from Calculations_p1 import choose_hospital_ASC
 from Filters_p1 import sidebar
 from Content_p1 import content
+
+
+VALID_USERNAME_PASSWORD_PAIRS = {
+    'user_42': '1234',
+    'Sysoev_SA': 'Jj010900'
+}
 
 
 
@@ -61,10 +68,13 @@ app = Dash(name=__name__,
            title='test_BI_app', 
            external_stylesheets=[dbc.themes.BOOTSTRAP])
 
-colors = {'background': '#FFFFFF', 'text': '#000000'}
+auth = dash_auth.BasicAuth(
+    app,
+    VALID_USERNAME_PASSWORD_PAIRS
+)
 
 app.layout = html.Div(
-    style={'backgroundColor': colors['background']},
+    #style={'backgroundColor': colors['background']},
     children=[
         sidebar,
         tabs_navigator_offcanvas,
@@ -120,4 +130,4 @@ def open_tabs_navigator(n1, is_open):
 
 # Development server
 if __name__ == '__main__':
-    app.run_server(host='0.0.0.0', debug=False, port=8050)
+    app.run_server(host='0.0.0.0', debug=True, port=8050)

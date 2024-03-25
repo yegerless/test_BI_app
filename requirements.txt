@@ -7,3 +7,4 @@ plotly==5.19.0
 psycopg2==2.9.9
 Flask==3.0.2
 dash-auth==2.3.0
+gunicorn==21.2.0

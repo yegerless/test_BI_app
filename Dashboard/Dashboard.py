@@ -3,10 +3,10 @@ import dash_bootstrap_components as dbc
 import flask
 import dash_auth
 
-from Navigation import tabs_navigator_offcanvas
-from Calculations_p1 import choose_hospital_ASC
-from Filters_p1 import sidebar
-from Content_p1 import content
+from Dashboard.Navigation import tabs_navigator_offcanvas
+from Dashboard.Calculations_p1 import choose_hospital_ASC
+from Dashboard.Filters_p1 import sidebar
+from Dashboard.Content_p1 import content
 
 
 VALID_USERNAME_PASSWORD_PAIRS = {
@@ -14,16 +14,13 @@ VALID_USERNAME_PASSWORD_PAIRS = {
     'Sysoev_SA': '1234'
 }
 
-
-
-
-
-
 server = flask.Flask(__name__)
 app = Dash(name=__name__, 
            server=server, 
            title='test_BI_app', 
            external_stylesheets=[dbc.themes.BOOTSTRAP])
+
+application = app.server
 
 auth = dash_auth.BasicAuth(
     app,
@@ -82,9 +79,6 @@ def open_tabs_navigator(n1, is_open):
         return not is_open
     return is_open
 
-
-
-
 # Development server
-if __name__ == '__main__':
-    app.run_server(host='0.0.0.0', debug=False, port=8050)
+# if __name__ == '__main__':
+#     app.run_server(host='0.0.0.0', debug=False, port=8050)

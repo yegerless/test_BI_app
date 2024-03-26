@@ -20,8 +20,6 @@ app = Dash(name=__name__,
            title='test_BI_app', 
            external_stylesheets=[dbc.themes.BOOTSTRAP])
 
-application = app.server
-
 auth = dash_auth.BasicAuth(
     app,
     VALID_USERNAME_PASSWORD_PAIRS
@@ -81,4 +79,4 @@ def open_tabs_navigator(n1, is_open):
 
 # Development server
 # if __name__ == '__main__':
-#     app.run_server(host='0.0.0.0', debug=False, port=8050)
+#     app.run_server(host='0.0.0.0', debug=True, port=8050)

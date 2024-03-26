@@ -1,5 +1,5 @@
 #python==3.12.2  
-dash==2.14.2
+dash==2.15.0
 dash-bootstrap-components==1.5.0
 openpyxl==3.0.10
 pandas==2.1.4 

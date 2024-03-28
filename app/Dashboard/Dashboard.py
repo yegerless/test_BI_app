@@ -3,64 +3,16 @@ import dash_bootstrap_components as dbc
 import flask
 import dash_auth
 
-from Calculations_p1 import choose_hospital_ASC
-from Filters_p1 import sidebar
-from Content_p1 import content
+from Dashboard.Navigation import tabs_navigator_offcanvas
+from Dashboard.Calculations_p1 import choose_hospital_ASC
+from Dashboard.Filters_p1 import sidebar
+from Dashboard.Content_p1 import content
 
 
 VALID_USERNAME_PASSWORD_PAIRS = {
     'user_42': '1234',
     'Sysoev_SA': '1234'
 }
-
-
-
-tabs_navigator_offcanvas = html.Div(
-    children=[
-        dbc.Button(
-            children=['Навигация по приложению'],
-            id='Tabs_navigator_open_button',
-            n_clicks=0,
-            className='nav_button_1',
-            style={'margin-top': '20px', 'margin-left': '30px'},
-        ),
-        dbc.Offcanvas(
-            children=[
-                html.P(
-                    '''Здесь будут кнопки со ссылками на все страницы приложения.
-                    
-                    Сейчас вы можете видеть пример как будут выглядеть эти кнопки (на данный момент они не работают).'''
-                ),
-                dbc.ListGroup(
-                    children=[
-                        dbc.ListGroupItem('Домашняя страница'),
-                        dbc.ListGroupItem('Мониторинг ОКС'),
-                        dbc.ListGroupItem('Какая-то страница №1'),
-                        dbc.ListGroupItem('Какая-то страница №2'),
-                        dbc.ListGroupItem('Какая-то страница №3'),
-                        dbc.ListGroupItem('Какая-то страница №4'),
-                        dbc.ListGroupItem('Какая-то страница №5'),
-                        dbc.ListGroupItem('Какая-то страница №6'),
-                        dbc.ListGroupItem('Какая-то страница №7'),
-                        dbc.ListGroupItem('Какая-то страница №8'),
-                        dbc.ListGroupItem('Какая-то страница №9'),
-                        dbc.ListGroupItem('Какая-то страница №10'),
-                        dbc.ListGroupItem('Контакты для обратной связи')
-                    ]
-                )
-            ],
-            id='Tabs_navigator',
-            title='Вкладки аналитической панели',
-            placement='start',
-            backdrop=False,
-            scrollable=True,
-            is_open=False,
-            style={'width': '15%', 'background-color': 'Azure'}
-        )
-    ],
-    style={'position': 'fixed', 'width': '15%'}
-)
-
 
 server = flask.Flask(__name__)
 app = Dash(name=__name__, 
@@ -125,9 +77,6 @@ def open_tabs_navigator(n1, is_open):
         return not is_open
     return is_open
 
-
-
-
 # Development server
-if __name__ == '__main__':
-    app.run_server(host='0.0.0.0', debug=False, port=8050)
+# if __name__ == '__main__':
+#     app.run_server(host='0.0.0.0', debug=True, port=8050)

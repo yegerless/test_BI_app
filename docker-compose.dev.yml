@@ -1,0 +1,22 @@
+version: '3'
+
+# docker-compose -f docker-compose.dev.yml build
+# docker-compose -f docker-compose.dev.yml up -d
+
+services:
+  app:
+    build: ./app
+    container_name: test_bi_app
+    command: gunicorn -b 0.0.0.0:5000 Dashboard.wsgi:application
+    #environment: ???
+    volumes:
+      - ./app:/user/src/app
+    expose:
+      - 5000
+  nginx:
+    build: ./nginx
+    ports:
+      - 80:80
+    #volumes: ???
+    depends_on:
+      - app

@@ -6,6 +6,8 @@ WORKDIR /usr/src/app
 
 COPY . .
 
-RUN pip install --upgrade pip && pip install -r requirements.txt
+RUN pip install -r requirements.txt
 
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:8050", "Dashboard.wsgi:application"]
+#CMD ["gunicorn", "-b", "0.0.0.0:8050", "Dashboard.wsgi:application"]
+
+EXPOSE 5000

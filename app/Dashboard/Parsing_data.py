@@ -77,13 +77,13 @@ for index, row in df.iterrows():
 df['Date'] = pd.to_datetime(df[['Year', 'Month', 'Day']], dayfirst=True) #Собираем дату в одну колонку
 df['Date_prev'] = df['Date'] - pd.DateOffset(months=1) #Создаем столбец 'Date_prev' с датой на один месяц меньше 
 
-df.drop(columns=['Source', 'Year', 'Day', 'Attribute', 'Source_1', 'Source_2',
+df.drop(columns=['Source', 'Year', 'Month', 'Day', 'Attribute', 'Source_1', 'Source_2',
                  'Source_5', 'Source_6', 'Source_7', 'Source_8'], inplace=True) #Чистим от лишних столбцов 
 
 
 
 #Реорганизация столбцов
-df = df[['Hospital', 'Date', 'Month', 'Date_prev', 'Целевые показатели оценки эффективности реализации мероприятий',
+df = df[['Hospital', 'Date', 'Date_prev', 'Целевые показатели оценки эффективности реализации мероприятий',
          '№ п/п', 'Единицы измерения', 'Периодичность представления', 'Value_NI']]
 
 
@@ -119,7 +119,11 @@ def create_value(row):
 df['Value'] = df.apply(create_value, axis=1) 
 
 
+df['Month_number'] = df['Date'].dt.month
+
+
 
 #Сохранение полученного DataFrame в виде таблички 'Мониторинг_Новгород.xlsx', если мы в главной ветке
 if __name__ == '__main__': 
-    df.to_excel(r'Мониторинг_Новгород.xlsx')
+    #df.to_excel(r'Мониторинг_Новгород.xlsx')
+    print(df.info())
